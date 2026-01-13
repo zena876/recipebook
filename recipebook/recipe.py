@@ -10,8 +10,11 @@ class Recipe:
     """Класс для представления кулинарного рецепта."""
 
     def __init__(self, name: str, ingredients: List[Ingredient] = None,
-             description: str = "", instructions: str = "", category: str = "Основное"):
-        """Инициализирует рецепт."""
+                 description: str = "", instructions: str = "", category: str = "Основное"):
+        """
+        Инициализирует рецепт.
+        
+        """
         self._name = name
         self._ingredients = ingredients if ingredients is not None else []
         self._description = description
@@ -20,17 +23,18 @@ class Recipe:
 
     @property
     def name(self) -> str:
-        """Возвращает название рецепта.
-
-        return Название рецепта
+        """
+        
+        :return: 
         """
         return self._name
 
     @name.setter
     def name(self, value: str):
-        """Устанавливает название рецепта.
-        
-        parm._name = название рецепта
+        """
+            
+        :param value: 
+        :return: 
         """
         if not value or not value.strip():
             raise ValueError("Название рецепта не может быть пустым")
@@ -38,69 +42,77 @@ class Recipe:
 
     @property
     def ingredients(self) -> List[Ingredient]:
-        """Возвращает список ингредиентов.
-
-        return список ингредиентов
+        """
+        
+        :return: 
         """
         return self._ingredients
 
     @property
     def description(self) -> str:
-        """Возвращает описание рецепта.
-
-        return описание рецепта
+        """
+        
+        :return: 
         """
         return self._description
 
     @description.setter
     def description(self, value: str):
-        """Устанавливает описание рецепта.
-
-        parm._description = описание рецепта
+        """
+        
+        :param value: 
+        :return: 
         """
         self._description = value
 
     @property
     def instructions(self) -> str:
-        """Возвращает инструкции по приготовлению.
-
-        return инструкции по приготовлению
+        """
+        
+        :return: 
         """
         return self._instructions
 
     @instructions.setter
     def instructions(self, value: str):
-        """Устанавливает инструкции по приготовлению.
+        """
         
-        parm._instructions = инструкции по приготовлению
+        :param value: 
+        :return: 
         """
         self._instructions = value
 
     @property
     def category(self) -> str:
-        """Возвращает категорию рецепта.
+        """
         
-        return категория рецепта
+        :return: 
         """
         return self._category
 
     @category.setter
     def category(self, value: str):
-        """Устанавливает категорию рецепта.
-
-        parm._category = категория рецепта
+        """
+        
+        :param value: 
+        :return: 
         """
         self._category = value
 
     def add_ingredient(self, ingredient: Ingredient):
-        """Добавляет ингредиент в рецепт.
+        """
         
-        param._ingredients.append(ингредиент)
+        :param ingredient: 
+        :return: 
         """
         self._ingredients.append(ingredient)
 
     def remove_ingredient(self, ingredient_name: str) -> bool:
-        """Удаляет ингредиент из рецепта по названию."""
+        """
+        
+        :param ingredient_name: 
+        :return: 
+        """
         for i, ingredient in enumerate(self._ingredients):
             if ingredient.name.lower() == ingredient_name.lower():
                 del self._ingredients[i]
@@ -108,31 +120,32 @@ class Recipe:
         return False
 
     def calculate_calories(self) -> float:
-        """Вычисляет общую калорийность рецепта.
-
-        return общая калорийность
+        """
+        
+        :return: 
         """
         return sum(ingredient.total_calories() for ingredient in self._ingredients)
 
     def get_ingredient_names(self) -> List[str]:
-        """Возвращает список названий ингредиентов.
+        """
         
-        return список названий ингредиентов
+        :return: 
         """
         return [ingredient.name for ingredient in self._ingredients]
 
     def contains_ingredient(self, ingredient_name: str) -> bool:
-        """Проверяет, содержит ли рецепт указанный ингредиент.
+        """
         
-        return указанный ингредиент
+        :param ingredient_name: 
+        :return: 
         """
         return any(ingredient.name.lower() == ingredient_name.lower()
                    for ingredient in self._ingredients)
 
     def str(self) -> str:
-        """Строковое представление рецепта.
+        """
         
-        return рецепт
+        :return: 
         """
         ingredients_str = "\n".join(f"  - {ingredient}" for ingredient in self._ingredients)
         return (f"Рецепт: {self._name}\n"
@@ -142,16 +155,16 @@ class Recipe:
                 f"Калории: {self.calculate_calories():.1f}")
 
     def repr(self) -> str:
-        """Представление рецепта для отладки.
-
-        return рецепт
+        """
+        
+        :return: 
         """
         return f"Recipe(name='{self._name}', ingredients={len(self._ingredients)})"
 
     def to_dict(self) -> dict:
-        """Преобразует рецепт в словарь.
+        """
         
-        return словарь из рецепта
+        :return: 
         """
         return {
             'name': self._name,
@@ -163,9 +176,10 @@ class Recipe:
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Recipe':
-        """Создает рецепт из словаря.
-
-        return рецепт
+        """
+        
+        :param data: 
+        :return: 
         """
         recipe = cls(
             name=data['name'],
@@ -177,7 +191,5 @@ class Recipe:
         for ing_data in data['ingredients']:
             recipe.add_ingredient(Ingredient.from_dict(ing_data))
 
-
         return recipe
-
 
