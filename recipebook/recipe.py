@@ -18,7 +18,6 @@ class Recipe:
         :param description: описание
         :param instructions: инструкции
         :param category: категория
-        :return: рецепт
         """
         self._name = name
         self._ingredients = ingredients if ingredients is not None else []
@@ -189,6 +188,7 @@ class Recipe:
             recipe.add_ingredient(Ingredient.from_dict(ing_data))
 
         return recipe
+
 
 
 
