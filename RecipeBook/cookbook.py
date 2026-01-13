@@ -17,12 +17,18 @@ class Cookbook:
 
     @property
     def recipes(self) -> List[Recipe]:
-        """Возвращает список рецептов."""
+        """Возвращает список рецептов.
+
+        return список рецептов
+        """
         return self._recipes
 
     @property
     def count(self) -> int:
-        """Возвращает количество рецептов."""
+        """Возвращает количество рецептов.
+
+        return количество рецептов
+        """
         return len(self._recipes)
 
     def add_recipe(self, recipe: Recipe) -> bool:
@@ -45,6 +51,8 @@ class Cookbook:
 
     def get_recipe(self, recipe_name: str) -> Optional[Recipe]:
         """Находит рецепт по названию.
+
+        return рецепт
         """
         for recipe in self._recipes:
             if recipe.name.lower() == recipe_name.lower():
@@ -53,12 +61,16 @@ class Cookbook:
 
     def find_recipes_by_ingredient(self, ingredient_name: str) -> List[Recipe]:
         """Находит рецепты, содержащие указанный ингредиент.
+
+        return рецепт с ингридиенотом
         """
         return [recipe for recipe in self._recipes
                 if recipe.contains_ingredient(ingredient_name)]
 
     def find_recipes_by_category(self, category: str) -> List[Recipe]:
         """Находит рецепты по категории.
+
+        return рецепт по категории
         """
         return [recipe for recipe in self._recipes
                 if recipe.category.lower() == category.lower()]
@@ -96,7 +108,7 @@ class Cookbook:
             categories.add(recipe.category)
         return list(categories)
 
-    def str(self) -> str:
+    def __str__(self) -> str:
         """Строковое представление кулинарной книги."""
         if not self._recipes:
             return "Кулинарная книга пуста"
@@ -117,5 +129,6 @@ class Cookbook:
         print("Список покупок:")
         for ingredient, quantity in shopping_list.items():
             print(f"{ingredient}: {quantity} г")
+
 
 
