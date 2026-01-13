@@ -4,7 +4,10 @@
 
 class Ingredient:
     def __init__(self, name: str, quantity: float, unit: str = "г", calories_per_unit: float = 0.0):
-        #Инициализирует ингредиент.
+        """
+        Инициализирует ингредиент.
+        
+        """
         self._name = name
         self._quantity = quantity
         self._unit = unit
@@ -12,36 +15,40 @@ class Ingredient:
 
     @property
     def name(self) -> str:
-        """Возвращает название ингредиента.
+        """
+        Возвращает название ингредиента.
 
-        return название"""
+        :return self._name: str
+        """
         return self._name
 
     @name.setter
     def name(self, value: str):
-        """Устанавливает название ингредиента.
+        """
+        Устанавливает название ингредиента.
 
 
-        param name название ингредиента"""
+        :param value: str
+        """
         if not value or not value.strip():
             raise ValueError("Название ингредиента не может быть пустым")
         self._name = value.strip()
 
     @property
     def quantity(self) -> float:
-        """Возвращает количество ингредиента.
+        """
+        Возвращает количество ингредиента.
 
-        return количество ингредиента"""
+        :return quantity: float"""
         return self._quantity
 
     @quantity.setter
     def quantity(self, value: float):
-        """Устанавливает количество ингредиента.
+        """
+        Устанавливает количество ингредиента.
 
 
-        param quantity количество ингридиента
-
-
+        :param value: float
         """
         if value < 0:
             raise ValueError("Количество не может быть отрицательным")
@@ -49,9 +56,10 @@ class Ingredient:
 
     @property
     def unit(self) -> str:
-        """Возвращает единицу измерения.
+        """
+        Возвращает единицу измерения.
 
-        return единица измерения
+        :return unit: str
 
         """
         return self._unit
@@ -60,36 +68,54 @@ class Ingredient:
     def unit(self, value: str):
         """Устанавливает единицу измерения.
 
-        param unit единица измерения
+        :param value: str
         """
         self._unit = value
 
     @property
     def calories_per_unit(self) -> float:
-        #Возвращает калории на единицу измерения.
+        """
+        Возвращает калории на единицу измерения.
+        :return calories_per_unit: float
+        """
         return self._calories_per_unit
 
     @calories_per_unit.setter
     def calories_per_unit(self, value: float):
-        #Устанавливает калории на единицу измерения.
+        """
+        
+        :param value: 
+        :return: 
+        """
         if value < 0:
             raise ValueError("Калории не могут быть отрицательными")
         self._calories_per_unit = value
 
     def total_calories(self) -> float:
-        #Вычисляет общее количество калорий для ингредиента.
+        """
+        
+        :return: 
+        """
         return self._quantity * self._calories_per_unit
 
     def __str__(self) -> str:
-        #Строковое представление ингредиента.
+        """
+            
+        :return: 
+        """
         return f"{self._name}: {self._quantity} {self._unit}"
 
     def __repr__(self) -> str:
-        #Представление ингредиента для отладки.
+        """ 
+        :return: 
+        """
         return f"Ingredient(name='{self._name}', quantity={self._quantity}, unit='{self._unit}')"
 
     def to_dict(self) -> dict:
-        #Преобразует ингредиент в словарь.
+        """
+        
+        :return: 
+        """
         return {
             'name': self._name,
             'quantity': self._quantity,
@@ -99,7 +125,10 @@ class Ingredient:
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Ingredient':
-        #Создает ингредиент из словаря.
+        """
+        Создает ингредиент из словаря.
+        :param data: 
+        """
         return cls(
             name=data['name'],
             quantity=data['quantity'],
