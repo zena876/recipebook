@@ -80,11 +80,11 @@ class Ingredient:
         #Вычисляет общее количество калорий для ингредиента.
         return self._quantity * self._calories_per_unit
 
-    def str(self) -> str:
+    def __str__(self) -> str:
         #Строковое представление ингредиента.
         return f"{self._name}: {self._quantity} {self._unit}"
 
-    def repr(self) -> str:
+    def __repr__(self) -> str:
         #Представление ингредиента для отладки.
         return f"Ingredient(name='{self._name}', quantity={self._quantity}, unit='{self._unit}')"
 
@@ -107,4 +107,5 @@ class Ingredient:
             calories_per_unit=data.get('calories_per_unit', 0.0)
 
         )
+
 
