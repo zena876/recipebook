@@ -1,10 +1,14 @@
 """
 Главный исполняемый модуль RecipeBook.
 """
-
-from .cookbook import Cookbook
-from .recipe import Recipe
-from .ingredient import Ingredient
+try:
+    from recipebook.cookbook import Cookbook
+    from recipebook.recipe import Recipe
+    from recipebook.ingredient import Ingredient
+except ImportError:
+    from .cookbook import Cookbook
+    from .recipe import Recipe
+    from .ingredient import Ingredient
 
 if __name__ == "__main__":
     """Основная функция - демонстрация работы пакета."""
@@ -43,4 +47,5 @@ if __name__ == "__main__":
     shopping_list = cookbook.generate_shopping_list(["Омлет классический"])
     for ingredient, quantity in shopping_list.items():
         print(f"   {ingredient}: {quantity} г")
+
 
