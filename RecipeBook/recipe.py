@@ -20,7 +20,10 @@ class Recipe:
 
     @property
     def name(self) -> str:
-        """Возвращает название рецепта."""
+        """Возвращает название рецепта.
+
+        return Название рецепта
+        """
         return self._name
 
     @name.setter
@@ -32,12 +35,18 @@ class Recipe:
 
     @property
     def ingredients(self) -> List[Ingredient]:
-        """Возвращает список ингредиентов."""
+        """Возвращает список ингредиентов.
+
+        return список ингредиентов
+        """
         return self._ingredients
 
     @property
     def description(self) -> str:
-        """Возвращает описание рецепта."""
+        """Возвращает описание рецепта.
+
+        return описание рецепта
+        """
         return self._description
 
     @description.setter
@@ -125,5 +134,6 @@ class Recipe:
 
         for ing_data in data['ingredients']:
             recipe.add_ingredient(Ingredient.from_dict(ing_data))
+
 
         return recipe
