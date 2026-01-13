@@ -9,7 +9,7 @@ from .ingredient import Ingredient
 class Recipe:
     """Класс для представления кулинарного рецепта."""
 
-    def init(self, name: str, ingredients: List[Ingredient] = None,
+    def __init__(self, name: str, ingredients: List[Ingredient] = None,
              description: str = "", instructions: str = "", category: str = "Основное"):
         """Инициализирует рецепт."""
         self._name = name
@@ -137,3 +137,4 @@ class Recipe:
 
 
         return recipe
+
