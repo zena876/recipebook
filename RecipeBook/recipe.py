@@ -28,7 +28,10 @@ class Recipe:
 
     @name.setter
     def name(self, value: str):
-        """Устанавливает название рецепта."""
+        """Устанавливает название рецепта.
+        
+        parm._name = название рецепта
+        """
         if not value or not value.strip():
             raise ValueError("Название рецепта не может быть пустым")
         self._name = value.strip()
@@ -51,31 +54,49 @@ class Recipe:
 
     @description.setter
     def description(self, value: str):
-        """Устанавливает описание рецепта."""
+        """Устанавливает описание рецепта.
+
+        parm._description = описание рецепта
+        """
         self._description = value
 
     @property
     def instructions(self) -> str:
-        """Возвращает инструкции по приготовлению."""
+        """Возвращает инструкции по приготовлению.
+
+        return инструкции по приготовлению
+        """
         return self._instructions
 
     @instructions.setter
     def instructions(self, value: str):
-        """Устанавливает инструкции по приготовлению."""
+        """Устанавливает инструкции по приготовлению.
+        
+        parm._instructions = инструкции по приготовлению
+        """
         self._instructions = value
 
     @property
     def category(self) -> str:
-        """Возвращает категорию рецепта."""
+        """Возвращает категорию рецепта.
+        
+        return категория рецепта
+        """
         return self._category
 
     @category.setter
     def category(self, value: str):
-        """Устанавливает категорию рецепта."""
+        """Устанавливает категорию рецепта.
+
+        parm._category = категория рецепта
+        """
         self._category = value
 
     def add_ingredient(self, ingredient: Ingredient):
-        """Добавляет ингредиент в рецепт."""
+        """Добавляет ингредиент в рецепт.
+        
+        param._ingredients.append(ингредиент)
+        """
         self._ingredients.append(ingredient)
 
     def remove_ingredient(self, ingredient_name: str) -> bool:
@@ -87,20 +108,32 @@ class Recipe:
         return False
 
     def calculate_calories(self) -> float:
-        """Вычисляет общую калорийность рецепта."""
+        """Вычисляет общую калорийность рецепта.
+
+        return общая калорийность
+        """
         return sum(ingredient.total_calories() for ingredient in self._ingredients)
 
     def get_ingredient_names(self) -> List[str]:
-        """Возвращает список названий ингредиентов."""
+        """Возвращает список названий ингредиентов.
+        
+        return список названий ингредиентов
+        """
         return [ingredient.name for ingredient in self._ingredients]
 
     def contains_ingredient(self, ingredient_name: str) -> bool:
-        """Проверяет, содержит ли рецепт указанный ингредиент."""
+        """Проверяет, содержит ли рецепт указанный ингредиент.
+        
+        return указанный ингредиент
+        """
         return any(ingredient.name.lower() == ingredient_name.lower()
                    for ingredient in self._ingredients)
 
     def str(self) -> str:
-        """Строковое представление рецепта."""
+        """Строковое представление рецепта.
+        
+        return рецепт
+        """
         ingredients_str = "\n".join(f"  - {ingredient}" for ingredient in self._ingredients)
         return (f"Рецепт: {self._name}\n"
                 f"Категория: {self._category}\n"
@@ -109,11 +142,17 @@ class Recipe:
                 f"Калории: {self.calculate_calories():.1f}")
 
     def repr(self) -> str:
-        """Представление рецепта для отладки."""
+        """Представление рецепта для отладки.
+
+        return рецепт
+        """
         return f"Recipe(name='{self._name}', ingredients={len(self._ingredients)})"
 
     def to_dict(self) -> dict:
-        """Преобразует рецепт в словарь."""
+        """Преобразует рецепт в словарь.
+        
+        return словарь из рецепта
+        """
         return {
             'name': self._name,
             'ingredients': [ingredient.to_dict() for ingredient in self._ingredients],
@@ -124,7 +163,10 @@ class Recipe:
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Recipe':
-        """Создает рецепт из словаря."""
+        """Создает рецепт из словаря.
+
+        return рецепт
+        """
         recipe = cls(
             name=data['name'],
             description=data.get('description', ''),
@@ -137,4 +179,5 @@ class Recipe:
 
 
         return recipe
+
 
