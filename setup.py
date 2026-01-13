@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='RecipeBook', # Название вашей программы
+    name='recipebook', # Название вашей программы
     version='0.0.1', # Версия вашей программы.
     packages=find_packages("."),
     scripts=["bin/recipebook_main.py"], # Расположение главного исполняемого файла.
@@ -24,5 +24,6 @@ setup(
       ],
 
 )
+
 
 
