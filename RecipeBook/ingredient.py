@@ -3,7 +3,7 @@
 
 
 class Ingredient:
-    def init(self, name: str, quantity: float, unit: str = "г", calories_per_unit: float = 0.0):
+    def __init__(self, name: str, quantity: float, unit: str = "г", calories_per_unit: float = 0.0):
         #Инициализирует ингредиент.
         self._name = name
         self._quantity = quantity
@@ -85,4 +85,5 @@ class Ingredient:
             quantity=data['quantity'],
             unit=data.get('unit', 'г'),
             calories_per_unit=data.get('calories_per_unit', 0.0)
+
         )
