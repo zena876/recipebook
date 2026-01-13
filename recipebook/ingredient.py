@@ -6,7 +6,11 @@ class Ingredient:
     def __init__(self, name: str, quantity: float, unit: str = "г", calories_per_unit: float = 0.0):
         """
         Инициализирует ингредиент.
-        
+        :param name: имя
+        :param quantity: количество
+        :param unit: единица измерения
+        :param calories_per_unit: калории
+        :return: ингридиент
         """
         self._name = name
         self._quantity = quantity
@@ -108,7 +112,8 @@ class Ingredient:
 
     def __repr__(self) -> str:
         """ 
-        :return: 
+        строковое представление ингредиента
+        :return: ингредиент
         """
         return f"Ingredient(name='{self._name}', quantity={self._quantity}, unit='{self._unit}')"
 
@@ -137,6 +142,7 @@ class Ingredient:
             calories_per_unit=data.get('calories_per_unit', 0.0)
 
         )
+
 
 
 
