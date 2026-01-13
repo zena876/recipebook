@@ -7,7 +7,7 @@ setup(
     version='0.0.1', # Версия вашей программы.
     packages=find_packages("."),
     scripts=["bin/recipebook_main"], # Расположение главного исполняемого файла.
-    url='https://github.com/zena876/corse_work_recipe', # Адрес репозитория с вашей курсовой работой.
+    url='https://github.com/zena876/RecipeBook.git', # Адрес репозитория с вашей курсовой работой.
     license='Apache-2.0',
     author='Наторова Евгения Михайловна', # ФИО автора.
     author_email='nzena605@gmail.com', # Электронная почта автора.
@@ -24,3 +24,4 @@ setup(
       ],
 
 )
+
