@@ -10,7 +10,6 @@ class Ingredient:
         :param quantity: количество
         :param unit: единица измерения
         :param calories_per_unit: калории
-        :return: ингридиент
         """
         self._name = name
         self._quantity = quantity
@@ -142,6 +141,7 @@ class Ingredient:
             calories_per_unit=data.get('calories_per_unit', 0.0)
 
         )
+
 
 
 
