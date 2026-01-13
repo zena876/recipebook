@@ -9,7 +9,6 @@ from .ingredient import Ingredient
 
 class Cookbook:
     """Класс для управления кулинарной книгой.
-    :return: класс для управления книгой
     """
 
     def __init__(self, filename: str = "cookbook.json"):
@@ -38,7 +37,7 @@ class Cookbook:
     def add_recipe(self, recipe: Recipe) -> bool:
         """Добавляет рецепт в кулинарную книгу.
 
-        :return: рецепт в кулинарной книге
+        :param recipe: рецепт в кулинарной книге
         """
         if any(r.name.lower() == recipe.name.lower() for r in self._recipes):
             return False
@@ -49,7 +48,7 @@ class Cookbook:
     def remove_recipe(self, recipe_name: str) -> bool:
         """Удаляет рецепт по названию.
 
-        :return: удаленный рецепт
+        :return: найден ли рецепт при попытке его удалить
         """
         for i, recipe in enumerate(self._recipes):
             if recipe.name.lower() == recipe_name.lower():
@@ -147,5 +146,6 @@ class Cookbook:
         print("Список покупок:")
         for ingredient, quantity in shopping_list.items():
             print(f"{ingredient}: {quantity} г")
+
 
 
