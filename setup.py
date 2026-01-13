@@ -6,7 +6,7 @@ setup(
     name='RecipeBook', # Название вашей программы
     version='0.0.1', # Версия вашей программы.
     packages=find_packages("."),
-    scripts=["bin/recipebook_main"], # Расположение главного исполняемого файла.
+    scripts=["bin/recipebook_main.py"], # Расположение главного исполняемого файла.
     url='https://github.com/zena876/RecipeBook.git', # Адрес репозитория с вашей курсовой работой.
     license='Apache-2.0',
     author='Наторова Евгения Михайловна', # ФИО автора.
@@ -24,4 +24,5 @@ setup(
       ],
 
 )
+
 
