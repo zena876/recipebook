@@ -2,8 +2,6 @@
 Модуль для работы с кулинарной книгой. Содержит класс Cookbook
 """
 
-import json
-import os
 from typing import List, Dict, Optional
 from .recipe import Recipe
 from .ingredient import Ingredient
@@ -16,8 +14,6 @@ class Cookbook:
         """Инициализирует кулинарную книгу.
         """
         self._recipes: List[Recipe] = []
-        self._filename = filename
-        self._load_from_file()
 
     @property
     def recipes(self) -> List[Recipe]:
@@ -36,7 +32,6 @@ class Cookbook:
             return False
 
         self._recipes.append(recipe)
-        self._save_to_file()
         return True
 
     def remove_recipe(self, recipe_name: str) -> bool:
@@ -45,7 +40,6 @@ class Cookbook:
         for i, recipe in enumerate(self._recipes):
             if recipe.name.lower() == recipe_name.lower():
                 del self._recipes[i]
-                self._save_to_file()
                 return True
         return False
 
@@ -102,30 +96,6 @@ class Cookbook:
             categories.add(recipe.category)
         return list(categories)
 
-    def _save_to_file(self):
-        """Сохраняет кулинарную книгу в файл."""
-        try:
-            data = {
-                'recipes': [recipe.to_dict() for recipe in self._recipes]
-            }
-            with open(self._filename, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            print(f"Ошибка при сохранении файла: {e}")
-
-    def _load_from_file(self):
-        """Загружает кулинарную книгу из файла."""
-        if os.path.exists(self._filename):
-            try:
-                with open(self._filename, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-
-                self._recipes = []
-                for recipe_data in data.get('recipes', []):
-                    self._recipes.append(Recipe.from_dict(recipe_data))
-            except Exception as e:
-                print(f"Ошибка при загрузке файла: {e}")
-
     def str(self) -> str:
         """Строковое представление кулинарной книги."""
         if not self._recipes:
@@ -147,3 +117,4 @@ class Cookbook:
         print("Список покупок:")
         for ingredient, quantity in shopping_list.items():
             print(f"{ingredient}: {quantity} г")
+
